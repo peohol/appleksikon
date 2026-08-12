@@ -48,6 +48,16 @@ describe('router', () => {
     expect(screen.getByTestId('loc')).toHaveTextContent('/|')
   })
 
+  it('krasjer ikke på ugyldig prosent-koding i hash', () => {
+    window.history.replaceState(null, '', '/#%')
+    render(
+      <Router>
+        <LocationProbe />
+      </Router>,
+    )
+    expect(screen.getByTestId('loc')).toHaveTextContent('/|%')
+  })
+
   it('erstatter historikkoppføringen når man navigerer til samme adresse', async () => {
     const user = userEvent.setup()
     render(

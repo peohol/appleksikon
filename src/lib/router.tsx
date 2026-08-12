@@ -23,10 +23,19 @@ export function getNavigationKind(): NavigationKind {
   return currentNavigationKind
 }
 
+/** Dekoder URL-biter uten å kaste på ugyldige %-sekvenser (f.eks. «/#%»). */
+function safeDecode(value: string): string {
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return value
+  }
+}
+
 function readLocation(): RouteLocation {
   return {
     path: window.location.pathname,
-    hash: decodeURIComponent(window.location.hash.replace(/^#/, '')),
+    hash: safeDecode(window.location.hash.replace(/^#/, '')),
   }
 }
 

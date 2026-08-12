@@ -114,11 +114,17 @@ export function SokefeltDemo() {
   )
 }
 
+/** Tolker «YYYY-MM-DD» som lokal dato – new Date(streng) ville gitt UTC og feil dag vest for UTC. */
+function parseLocalDate(isoDate: string): Date {
+  const [year, month, day] = isoDate.split('-').map(Number)
+  return new Date(year, month - 1, day)
+}
+
 export function DatofeltDemo() {
   const [dato, setDato] = useState('')
   const id = useId()
   const formatert = dato
-    ? new Intl.DateTimeFormat('nb-NO', { dateStyle: 'long' }).format(new Date(dato))
+    ? new Intl.DateTimeFormat('nb-NO', { dateStyle: 'long' }).format(parseLocalDate(dato))
     : null
   return (
     <div className="demo-stack">
@@ -237,6 +243,7 @@ export function CheckboxDemo() {
 
 export function RadiogruppeDemo() {
   const [valg, setValg] = useState('Post')
+  const gruppeNavn = useId()
   return (
     <div className="demo-stack">
       <fieldset className="demo-fieldset">
@@ -245,7 +252,7 @@ export function RadiogruppeDemo() {
           <label key={navn} className="demo-check">
             <input
               type="radio"
-              name="radiogruppe-demo"
+              name={gruppeNavn}
               checked={valg === navn}
               onChange={() => setValg(navn)}
             />
@@ -260,15 +267,16 @@ export function RadiogruppeDemo() {
 
 export function ToggleDemo() {
   const [pa, setPa] = useState(false)
+  const labelId = useId()
   return (
     <div className="demo-stack">
       <div className="demo-togglerad">
-        <span id="toggle-demo-label">Ikke forstyrr</span>
+        <span id={labelId}>Ikke forstyrr</span>
         <button
           type="button"
           role="switch"
           aria-checked={pa}
-          aria-labelledby="toggle-demo-label"
+          aria-labelledby={labelId}
           className={'demo-switch' + (pa ? ' is-on' : '')}
           onClick={() => setPa(!pa)}
         >
@@ -306,11 +314,12 @@ export function SliderDemo() {
 
 export function StepperDemo() {
   const [antall, setAntall] = useState(2)
+  const labelId = useId()
   return (
     <div className="demo-stack">
       <div className="demo-stepper">
-        <span id="stepper-demo-label">Billetter</span>
-        <div className="demo-stepper-kontroll" role="group" aria-labelledby="stepper-demo-label">
+        <span id={labelId}>Billetter</span>
+        <div className="demo-stepper-kontroll" role="group" aria-labelledby={labelId}>
           <button
             type="button"
             className="demo-iconbtn"
@@ -438,21 +447,23 @@ export function ValideringDemo() {
 }
 
 export function FeilmeldingDemo() {
+  const feltId = useId()
+  const tekstId = useId()
   return (
     <div className="demo-stack">
       <div className="demo-felt">
-        <label className="demo-label" htmlFor="feilmelding-demo-felt">
+        <label className="demo-label" htmlFor={feltId}>
           Kortnummer
         </label>
         <input
-          id="feilmelding-demo-felt"
+          id={feltId}
           className="demo-input is-invalid"
           type="text"
           defaultValue="1234"
           aria-invalid="true"
-          aria-describedby="feilmelding-demo-tekst"
+          aria-describedby={tekstId}
         />
-        <p className="demo-feiltekst" id="feilmelding-demo-tekst">
+        <p className="demo-feiltekst" id={tekstId}>
           <Icon name="advarsel" size={14} /> Kortnummeret er for kort – det skal ha 16 sifre.
         </p>
       </div>

@@ -94,6 +94,13 @@ describe('Appleksikon', () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'false')
   })
 
+  it('har ingen dupliserte element-id-er, selv når samme demo vises flere ganger', () => {
+    // /tema/tekst viser feltdeler-demoen tre ganger (label, hjelpetekst, placeholder).
+    renderApp('/tema/tekst')
+    const ids = Array.from(document.querySelectorAll('[id]')).map((el) => el.id)
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+
   it('faner i demoen bytter panel med klikk', async () => {
     const user = userEvent.setup()
     renderApp('/tema/menyer')

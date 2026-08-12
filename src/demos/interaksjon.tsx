@@ -1,4 +1,4 @@
-import { useRef, useState, type DragEvent, type KeyboardEvent } from 'react'
+import { useId, useRef, useState, type DragEvent, type KeyboardEvent } from 'react'
 import { Icon } from '../components/Icon'
 import { DemoNote, DemoSeg, DemoStatus } from './shared'
 
@@ -222,6 +222,8 @@ export function InlineRedigeringDemo() {
   const [utkast, setUtkast] = useState(navn)
   const [redigerer, setRedigerer] = useState(false)
 
+  const inputId = useId()
+
   const lagre = () => {
     setNavn(utkast.trim() || navn)
     setRedigerer(false)
@@ -231,11 +233,11 @@ export function InlineRedigeringDemo() {
     <div className="demo-stack">
       {redigerer ? (
         <div className="demo-inline-rad">
-          <label className="sr-only" htmlFor="inline-demo-input">
+          <label className="sr-only" htmlFor={inputId}>
             Prosjektnavn
           </label>
           <input
-            id="inline-demo-input"
+            id={inputId}
             className="demo-input"
             value={utkast}
             autoFocus
@@ -272,6 +274,7 @@ export function InlineRedigeringDemo() {
 
 export function TastatursnarveiDemo() {
   const [lagret, setLagret] = useState(false)
+  const notatId = useId()
 
   const onKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') {
@@ -285,11 +288,11 @@ export function TastatursnarveiDemo() {
   return (
     <div className="demo-stack">
       <div className="demo-felt">
-        <label className="demo-label" htmlFor="snarvei-demo-notat">
+        <label className="demo-label" htmlFor={notatId}>
           Notat
         </label>
         <textarea
-          id="snarvei-demo-notat"
+          id={notatId}
           className="demo-input demo-textarea"
           rows={3}
           defaultValue="Skriv her, og trykk Ctrl+S (⌘+S på Mac) for å lagre."

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import {
   AccordionCore,
   ActionMenu,
@@ -98,6 +98,8 @@ export function SmlValg() {
   const [kanaler, setKanaler] = useState<string[]>(['E-post'])
   const [frekvens, setFrekvens] = useState('Bare viktige')
   const [ikkeForstyrr, setIkkeForstyrr] = useState(false)
+  const frekvensNavn = useId()
+  const toggleLabelId = useId()
 
   const toggleKanal = (navn: string) =>
     setKanaler((liste) =>
@@ -130,7 +132,7 @@ export function SmlValg() {
             <label key={navn} className="demo-check">
               <input
                 type="radio"
-                name="sml-frekvens"
+                name={frekvensNavn}
                 checked={frekvens === navn}
                 onChange={() => setFrekvens(navn)}
               />
@@ -142,12 +144,12 @@ export function SmlValg() {
       <div className="demo-sml-celle demo-sml-celle--venstre">
         <p className="demo-sml-navn">Toggle – av/på nå</p>
         <div className="demo-togglerad">
-          <span id="sml-toggle-label">Ikke forstyrr</span>
+          <span id={toggleLabelId}>Ikke forstyrr</span>
           <button
             type="button"
             role="switch"
             aria-checked={ikkeForstyrr}
-            aria-labelledby="sml-toggle-label"
+            aria-labelledby={toggleLabelId}
             className={'demo-switch' + (ikkeForstyrr ? ' is-on' : '')}
             onClick={() => setIkkeForstyrr(!ikkeForstyrr)}
           >
@@ -163,15 +165,16 @@ export function SmlValg() {
 export function SmlNedtrekk() {
   const [sortering, setSortering] = useState('Nyeste først')
   const [handling, setHandling] = useState<string | null>(null)
+  const selectId = useId()
   return (
     <div className="demo-sml-rutenett demo-sml-rutenett--tre">
       <div className="demo-sml-celle demo-sml-celle--venstre">
         <p className="demo-sml-navn">Select – velg en verdi</p>
-        <label className="demo-label" htmlFor="sml-select">
+        <label className="demo-label" htmlFor={selectId}>
           Sorter etter
         </label>
         <select
-          id="sml-select"
+          id={selectId}
           className="demo-input demo-select"
           value={sortering}
           onChange={(event) => setSortering(event.target.value)}
@@ -211,18 +214,19 @@ export function SmlNedtrekk() {
 
 export function SmlLabelPlaceholder() {
   const [verdi, setVerdi] = useState('')
+  const inputId = useId()
   return (
     <div className="demo-stack">
       <div className="demo-feltdeler">
         <div className="demo-feltdeler-rad">
-          <label className="demo-label" htmlFor="sml-lp-input">
+          <label className="demo-label" htmlFor={inputId}>
             E-post
           </label>
           <span className="demo-deletikett">label – blir stående</span>
         </div>
         <div className="demo-feltdeler-rad">
           <input
-            id="sml-lp-input"
+            id={inputId}
             className="demo-input"
             type="text"
             placeholder="navn@firma.no"

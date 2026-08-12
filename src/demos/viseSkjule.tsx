@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { Icon } from '../components/Icon'
 import { AccordionCore, DemoNote } from './shared'
 
@@ -49,6 +49,7 @@ export function DetailsDemo() {
 
 export function SammenleggbarSeksjonDemo() {
   const [open, setOpen] = useState(false)
+  const innholdId = useId()
   return (
     <div className="demo-panel demo-panel--kollaps">
       <h4 className="demo-panel-tittel demo-panel-tittel--knapp">
@@ -56,7 +57,7 @@ export function SammenleggbarSeksjonDemo() {
           type="button"
           className="demo-kollaps-trigger"
           aria-expanded={open}
-          aria-controls="kollaps-demo-innhold"
+          aria-controls={innholdId}
           onClick={() => setOpen(!open)}
         >
           <span className={'demo-accordion-chevron' + (open ? ' is-open' : '')}>
@@ -66,7 +67,7 @@ export function SammenleggbarSeksjonDemo() {
         </button>
       </h4>
       {open && (
-        <div id="kollaps-demo-innhold" className="demo-kollaps-innhold">
+        <div id={innholdId} className="demo-kollaps-innhold">
           <label className="demo-check">
             <input type="checkbox" />
             Bruk eksperimentelle funksjoner

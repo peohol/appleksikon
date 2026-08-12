@@ -1,4 +1,4 @@
-import { useId, useMemo, useState, type KeyboardEvent } from 'react'
+import { useEffect, useId, useMemo, useState, type KeyboardEvent } from 'react'
 import { categoriesById } from '../data'
 import type { Term } from '../data/types'
 import { navigate } from '../lib/router'
@@ -23,6 +23,15 @@ export function SearchPanel({
   const listId = useId()
   const results = useMemo(() => searchTerms(query), [query])
   const showResults = query.trim().length > 0
+
+  // Hold det aktive treffet synlig når man piler seg gjennom en lang liste.
+  useEffect(() => {
+    if (activeIndex >= 0) {
+      document
+        .getElementById(`${listId}-${activeIndex}`)
+        ?.scrollIntoView({ block: 'nearest' })
+    }
+  }, [activeIndex, listId])
 
   const go = (term: Term) => {
     setQuery('')

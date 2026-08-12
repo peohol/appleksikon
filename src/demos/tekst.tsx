@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { Icon } from '../components/Icon'
 import { DemoNote } from './shared'
 
@@ -18,18 +18,19 @@ export function TypografiDemo() {
 
 export function FeltdelerDemo() {
   const [verdi, setVerdi] = useState('')
+  const inputId = useId()
   return (
     <div className="demo-stack">
       <div className="demo-feltdeler">
         <div className="demo-feltdeler-rad">
-          <label className="demo-label" htmlFor="feltdeler-input">
+          <label className="demo-label" htmlFor={inputId}>
             E-post
           </label>
           <span className="demo-deletikett">label</span>
         </div>
         <div className="demo-feltdeler-rad">
           <input
-            id="feltdeler-input"
+            id={inputId}
             className="demo-input"
             type="text"
             placeholder="navn@firma.no"
