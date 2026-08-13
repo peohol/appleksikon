@@ -43,13 +43,6 @@ export function TermCard({ term, targeted = false }: { term: Term; targeted?: bo
       <header className="term-header">
         <h2 id={`${term.slug}-tittel`}>{term.name}</h2>
         {showEnglish && <span className="term-english">engelsk: {term.english}</span>}
-        <Link
-          className="term-anchor"
-          href={termHref(term.slug)}
-          aria-label={`Lenke direkte til «${term.name}»`}
-        >
-          #
-        </Link>
       </header>
       <div className="term-body">
         <div className="term-info">

@@ -1,40 +1,58 @@
 /* ---------- Design-tokens ---------- */
 
 :root {
-  --bg: #f6f6f4;
+  --bg: #f7f4ee;
   --surface: #ffffff;
-  --text: #1d222b;
-  --muted: #58606c;
-  --accent: #2f4fb8;
-  --accent-hover: #24409a;
-  --accent-soft: #edf1fb;
-  --accent-border: #c3cfef;
-  --border: #e4e4e0;
-  --border-strong: #cfcfc9;
-  --danger: #b3261e;
-  --danger-soft: #fdecea;
-  --ok: #1a7f4b;
-  --ok-soft: #e7f4ec;
-  --warn-soft: #fdf3d8;
-  --warn-border: #e6c86e;
+  --text: #251f19;
+  --muted: #6c6058;
+
+  /* Primær aksent – rusten høstoransje. Brukes for navigasjon, lenker og
+     primærhandlinger. */
+  --accent: #b1441a;
+  --accent-hover: #8a3414;
+  --accent-soft: #fbe8dd;
+  --accent-border: #e3b48f;
+
+  /* Sekundær aksent – gyllen okerfarge. Brukes for kategorier/merkelapper. */
+  --accent2: #8a6a17;
+  --accent2-hover: #6e5310;
+  --accent2-soft: #f8f0d8;
+  --accent2-border: #e0cb8a;
+
+  /* Tertiær aksent – dempet oliven/mose. Brukes for fremhevede
+     hjelpetekster og sammenligninger. */
+  --accent3: #5f6f34;
+  --accent3-hover: #4a5828;
+  --accent3-soft: #eaf0dc;
+  --accent3-border: #c6d2a0;
+
+  --border: #e9e0d2;
+  --border-strong: #d7c8b3;
+  --danger: #a3291c;
+  --danger-soft: #fbe6e1;
+  --ok: #3f7a3f;
+  --ok-soft: #e7f1e1;
+  --warn-soft: #fbf1d6;
+  --warn-border: #dcb75c;
 
   --radius: 10px;
   --radius-sm: 7px;
-  --shadow-1: 0 1px 2px rgba(23, 26, 33, 0.06), 0 1px 1px rgba(23, 26, 33, 0.04);
-  --shadow-2: 0 6px 24px rgba(23, 26, 33, 0.12);
+  --shadow-1: 0 1px 2px rgba(37, 31, 25, 0.06), 0 1px 1px rgba(37, 31, 25, 0.04);
+  --shadow-2: 0 6px 24px rgba(37, 31, 25, 0.14);
 
   /* Fargekoding for luft-demoene (margin/padding/gap) */
   --c-margin: #f9dcb8;
-  --c-margin-strong: #c07a17;
+  --c-margin-strong: #93590e;
   --c-padding: #cfe8cd;
-  --c-padding-strong: #34784a;
-  --c-gap: #e2d8f7;
-  --c-gap-strong: #7857c0;
-  --c-innhold: #e3ecfb;
+  --c-padding-strong: #3f7a3f;
+  --c-gap: #f0dcec;
+  --c-gap-strong: #9c4f74;
+  --c-innhold: #f3ead9;
 
+  --font-heading: 'Quicksand', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    sans-serif;
+    'Atkinson Hyperlegible Next', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
 
@@ -68,6 +86,14 @@ ul,
 ol,
 figure {
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
 }
 
 h1 {
@@ -181,8 +207,9 @@ kbd {
   display: inline-flex;
   align-items: center;
   gap: 9px;
+  font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--text);
   text-decoration: none;
 }
