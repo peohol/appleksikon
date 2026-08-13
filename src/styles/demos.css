@@ -528,7 +528,7 @@ input[type='range'] {
 .demo-textline--heading {
   height: 14px;
   width: 55%;
-  background: #99a3b4;
+  background: #a89a89;
 }
 
 .demo-textline--short {
@@ -546,7 +546,7 @@ input[type='range'] {
 
 .demo-kort-bilde {
   height: 74px;
-  background: linear-gradient(135deg, var(--accent-soft), #dce7f7);
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent2-soft));
   display: grid;
   place-items: center;
   color: var(--accent);

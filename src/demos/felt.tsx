@@ -347,7 +347,7 @@ export function StepperDemo() {
 }
 
 export function FargevelgerDemo() {
-  const [farge, setFarge] = useState('#2f4fb8')
+  const [farge, setFarge] = useState('#b1441a')
   const id = useId()
   return (
     <div className="demo-stack">
