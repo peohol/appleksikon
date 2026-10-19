@@ -825,3 +825,88 @@
     animation-duration: 0.01ms !important;
   }
 }
+
+
+/* Invitasjonen på forsiden bruker samme kortflater og farger som temaoversikten. */
+
+.home-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.4fr);
+  gap: clamp(18px, 4vw, 28px);
+  padding: clamp(18px, 3vw, 26px);
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--accent-border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-1);
+}
+
+.home-guide-illustration {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 6px;
+  min-height: 114px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.home-guide-illustration > span:not(.home-guide-arrow) {
+  padding: 9px 11px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent2-border);
+  background: var(--accent2-soft);
+  color: var(--text);
+}
+
+.home-guide-illustration > span:first-child {
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+}
+
+.home-guide-illustration > span:last-child {
+  background: var(--accent3-soft);
+  border-color: var(--accent3-border);
+}
+
+.home-guide-arrow {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.home-guide h2 {
+  font-size: clamp(1.3rem, 2.8vw, 1.6rem);
+  margin-bottom: 7px;
+}
+
+.home-guide p:not(.page-eyebrow) {
+  font-size: 0.94rem;
+  line-height: 1.62;
+  color: var(--muted);
+  margin-bottom: 11px;
+}
+
+.home-guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  font-weight: 700;
+  font-size: 0.91rem;
+}
+
+@media (max-width: 760px) {
+  .home-guide {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-guide-illustration {
+    min-height: 80px;
+    padding: 10px;
+  }
+}
