@@ -6,12 +6,14 @@ import { prefersReducedMotion } from './lib/motion'
 import { getNavigationKind, Link, useLocation, type RouteLocation } from './lib/router'
 import { ComparisonPage } from './pages/ComparisonPage'
 import { HomePage } from './pages/HomePage'
+import { GettingStartedPage } from './pages/GettingStartedPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { ThemePage } from './pages/ThemePage'
 
 function resolvePage(path: string): ReactNode {
   const segments = path.split('/').filter(Boolean)
   if (segments.length === 0) return <HomePage />
+  if (segments.length === 1 && segments[0] === 'kom-i-gang') return <GettingStartedPage />
   if (segments[0] === 'tema' && segments.length === 2) {
     const category = categoriesById[segments[1]]
     if (category) return <ThemePage key={category.id} category={category} />
@@ -64,7 +66,7 @@ export default function App() {
           sted.
         </p>
         <p>
-          <Link href="/#temaer">Alle temaer</Link>
+          <Link href="/#temaer">Alle temaer</Link> · <Link href="/kom-i-gang">Lag din første nettapp</Link>
         </p>
       </footer>
     </>
