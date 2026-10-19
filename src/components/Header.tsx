@@ -46,6 +46,7 @@ export function Header() {
         </Link>
         <nav className="site-nav" aria-label="Hovedmeny">
           <Link href="/#temaer">Temaer</Link>
+          <Link href="/kom-i-gang">Kom i gang</Link>
         </nav>
         <button type="button" className="site-sok" onClick={() => setSearchOpen(true)}>
           <Icon name="sok" size={16} />

@@ -47,6 +47,21 @@ export function HomePage() {
         </ol>
       </section>
 
+      <section className="home-guide" aria-labelledby="home-guide-heading">
+        <div className="home-guide-illustration" aria-hidden="true">
+          <span>GitHub</span><span className="home-guide-arrow">→</span>
+          <span>Claude / Codex</span><span className="home-guide-arrow">→</span>
+          <span>Vercel</span>
+        </div>
+        <div>
+          <p className="page-eyebrow">Nybegynnerguide</p>
+          <h2 id="home-guide-heading">Vil du lage din egen nettapp?</h2>
+          <p>Fra idé til en nettadresse du kan dele, med GitHub, Claude Code eller Codex og Vercel.
+            Du trenger ikke kunne programmere.</p>
+          <Link className="home-guide-link" href="/kom-i-gang">Slik kommer du i gang <span aria-hidden="true">→</span></Link>
+        </div>
+      </section>
+
       <section id="temaer" className="home-temaer">
         <h2>Bla i temaene</h2>
         <div className="tema-grid">
